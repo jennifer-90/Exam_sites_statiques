@@ -24,7 +24,7 @@ main{
 }
 .item_2{
     grid-areas:sidebar;
-    background-color: yellow;
+    /*  background-color: yellow;  */
     grid-column: 1 / span 4;
 }
 .item_3{
@@ -34,11 +34,12 @@ main{
 }
 .item_4{
     grid-areas:images;
-    background-color: lightblue;
+    /*  background-color: lightblue;  */
     grid-column: 1 / span 4;
 }
 
 /*-----item_1--------------------------------------------------*/
+
 .logo_rond, .logo_airbnb_alone, .logo_message, .logo_profile, .logo_coeur{
     width: 35px;
     height: 35px;
@@ -55,16 +56,38 @@ main{
 .search{
     display: flex;
     align-items: center;
-    width: 400px;
+    justify-content: center;
+    width: 430px;
     height: 15px;
     border-radius: 30px;
     box-shadow: grey 1px 1px;
     padding: 10px;
-
+    font-weight: bold;
 }
 
 .a, .b, .c{
     height: 40px;
+}
+
+input{
+    border:hidden;
+
+    &:focus{
+        outline: none;
+        border: none;
+    }
+}
+
+.icofont-search{
+    padding: 7px;
+    background-color: red;
+    border-radius: 50px;
+    color: white;
+}
+
+.logoAirbnb{
+    width: 120px;
+    height: 60px;
 }
 
 /*-----item_3---------------------------------------------------*/
@@ -76,9 +99,6 @@ main{
     height: 120%; /* -- Revoir le débordement du filter svg pour remettre la height de la nav à 100%-- */
 }
 
-
-
-
 .icone {
     height: 25px;
     margin-right: 10px;
@@ -88,14 +108,16 @@ main{
     height: 25px;
     width: 80px;
     border-radius: 15px;
+
+    &:hover{
+        cursor:pointer;
+    }
 }
 
 .svgFiltres{
     width: 25px;
     height: 25px;
-
 }
-
 
 
 /*-----item_4----------------------------------------------------*/
@@ -138,9 +160,6 @@ main{
 }
 
 
-
-
-
 /*----------------------- @media -----------------------------------------*/
 
 
@@ -160,7 +179,7 @@ main{
     grid-template-rows:  1% 99% ;
     grid-template-areas:
             "first_ligne"
-             "icones"
+            "icones"
             "images";
     }
     .item_2{
