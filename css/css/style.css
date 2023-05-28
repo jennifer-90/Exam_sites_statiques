@@ -7,49 +7,75 @@ main {
   max-width: 1800px; /* -- Ne pourra pas s'étendre à plus de 1200px peut importe la taille de l'écran et donc gardera les 6 colonnes-- */
   margin: auto; /* -- Reste centré peut-importe la taille de l'écran -- */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 5% 5% 90%;
   grid-gap: 0.5rem;
-  grid-template-areas: "sidebar sidebar sidebar sidebar" "icones icones icones icones" "images images images images";
+  grid-template-areas: "navBar_Search navBar_Search navBar_Search navBar_Search" "icones icones icones icones" "card_Content card_Content card_Content card_Content";
 }
 
-.item_1 {
-  grid-areas: first_ligne;
-  background-color: lawngreen;
-  grid-column: 1/span 4;
+/*-----|| item_0 ||------ => navBar_Search_Mobile ----*/
+.item_0 {
+  grid-area: navBar_Search_Mobile;
   display: none;
 }
 
-.item_2 {
-  grid-areas: sidebar;
-  /*  background-color: yellow;  */
-  grid-column: 1/span 4;
+.navBar_Search_Mobile {
+  background-color: white;
+  width: 100%;
+  height: 4rem;
+}
+.navBar_Search_Mobile .search_Mobile {
+  display: flex;
+  justify-content: center;
+  border-radius: 30px;
+  height: 30px;
+  align-items: center;
+  width: 100%;
 }
 
-.item_3 {
-  grid-areas: icones;
-  background-color: pink;
+/*-----|| item_1 ||------ => navBar_Mobile_Bottom ----*/
+.item_1 {
+  grid-areas: navBar_Mobile;
+  display: none;
   grid-column: 1/span 4;
+  background-color: white;
+  width: 90%;
 }
 
-.item_4 {
-  grid-areas: images;
-  /*  background-color: lightblue;  */
-  grid-column: 1/span 4;
-}
-
-/*-----item_1--------------------------------------------------*/
 .logo_rond, .logo_airbnb_alone, .logo_message, .logo_profile, .logo_coeur {
   width: 35px;
   height: 35px;
+  margin-right: 30px;
 }
 
-/*-----item_2--------------------------------------------------*/
+/*-----|| item_2 ||----- => navBar_Search_Desktop ----*/
+.item_2 {
+  grid-areas: navBar_Search;
+  grid-column: 1/span 4;
+  width: 90%;
+  position: fixed;
+  top: 0.02rem;
+  z-index: 5;
+  background-color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .search_bar {
   display: flex;
   justify-content: space-between;
 }
+.search_bar .a, .search_bar .b, .search_bar .c {
+  height: 40px;
+}
 
+/* ==>> class "a"  */
+.logoAirbnb {
+  width: 120px;
+  height: 60px;
+}
+
+/* ==>> class "b" -- */
 .search {
   display: flex;
   align-items: center;
@@ -57,63 +83,79 @@ main {
   width: 430px;
   height: 15px;
   border-radius: 30px;
-  box-shadow: grey 1px 1px;
+  box-shadow: rgba(128, 128, 128, 0.22) 1px 1px;
   padding: 10px;
   font-weight: bold;
 }
-
-.a, .b, .c {
-  height: 40px;
-}
-
-input {
+.search input {
   border: hidden;
 }
-input:focus {
+.search input:focus {
   outline: none;
   border: none;
 }
-
-.icofont-search {
+.search .icofont-search {
   padding: 7px;
   background-color: red;
   border-radius: 50px;
   color: white;
 }
 
-.logoAirbnb {
-  width: 120px;
-  height: 60px;
+/* ==>> class "c" -- */
+.c {
+  display: flex;
+  justify-content: space-between;
+}
+.c .user {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
-/*-----item_3---------------------------------------------------*/
+/*-----|| item_3 ||------- => icones ----*/
+.item_3 {
+  grid-areas: icones;
+  grid-column: 1/span 4;
+  width: 90%;
+  background-color: white;
+  box-shadow: rgba(128, 128, 128, 0.12) 0 3px;
+  position: fixed;
+  top: 6.5rem;
+  z-index: 5;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
 .nav_bar_icone_Flex {
   display: flex;
   justify-content: space-between;
   overflow-x: auto; /* Permet le défilement horizontal */
-  height: 120%; /* -- Revoir le débordement du filter svg pour remettre la height de la nav à 100%-- */
+  height: 100%; /* -- Revoir le débordement du filter svg pour remettre la height de la nav à 100%-- */
 }
-
-.icone {
+.nav_bar_icone_Flex .icone {
   height: 25px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
-
-.button_filtres {
+.nav_bar_icone_Flex .button_filtres {
   height: 25px;
   width: 80px;
   border-radius: 15px;
 }
-.button_filtres:hover {
+.nav_bar_icone_Flex .button_filtres:hover {
   cursor: pointer;
 }
-
-.svgFiltres {
+.nav_bar_icone_Flex .button_filtres .svgFiltres {
   width: 25px;
   height: 25px;
 }
 
-/*-----item_4----------------------------------------------------*/
+/*-----|| item_4 ||------ => card_Content ----*/
+.item_4 {
+  grid-areas: card_Content;
+  grid-column: 1/span 4;
+  padding-top: 8rem;
+}
+
 .container_card {
   display: flex;
   justify-content: space-between;
@@ -127,10 +169,29 @@ input:focus {
 }
 
 .card_img {
+  position: relative;
+}
+.card_img .image {
   aspect-ratio: 1/1; /*-- -- l & L => même taille -- -- */
   width: 100%;
   object-fit: cover; /*-- -- Empêche la déformation de l'image -- -- */
   border-radius: 15px;
+}
+.card_img .people {
+  width: 20%;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 1;
+  border-radius: 50px;
+  box-shadow: dimgrey 0.12rem 0.12rem;
+}
+.card_img .love {
+  position: absolute;
+  top: 8px; /* Position en haut */
+  right: 8px; /* Position à droite */
+  z-index: 2;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .card_content {
@@ -148,33 +209,49 @@ input:focus {
   width: 10px;
 }
 
-/*----------------------- @media -----------------------------------------*/
+/*-----||| °° @media °° ||| ---- =>>  au delà de 1375px -----*/
 @media screen and (min-width: 1375px) {
   main .card {
-    width: 260px;
+    width: 260px; /* -  Garder les 6 colonnes quand on dézoom- */
   }
 }
-/*----------------Mobile ----------------------*/
+/*-----||| °° Mobile °° ||| ---- =>> en-dessous de 800px ----*/
 @media screen and (max-width: 800px) {
   main {
     grid-template-columns: 1fr;
     grid-template-rows: 1% 99%;
-    grid-template-areas: "first_ligne" "icones" "images";
+    grid-template-areas: "navBar_Search_Mobile" "navBar_Mobile" "icones" "card_Content";
   }
-  .item_2 {
-    display: none;
+  main .item_0 {
+    display: flex;
+    position: fixed;
+    z-index: 6;
+    top: 0.02rem;
   }
-  .item_1 {
+  main .item_1 {
+    display: flex;
+    position: fixed;
+    z-index: 4;
+    bottom: 0.02rem;
+  }
+  main .item_1 .buttons_mobile {
     display: flex;
     justify-content: space-between;
-    position: fixed;
-    bottom: 0.2rem;
+  }
+  main .item_2 {
+    display: none;
+  }
+  main .item_3 {
+    top: 4rem;
+  }
+  main .item_4 {
+    padding-top: 3em;
   }
 }
-/*--------------------------------------*/
+/*----- ||| °° écran inférieure ou égale à 693 px °° ||| -----*/
 @media screen and (max-width: 693px) {
   main {
-    min-width: 300px; /* -- "main" sera limité à un écran de minimum 300px plus de 1200px peut importe la taille de l'écran et donc gardera les 6 colonnes-- */
+    min-width: 300px; /* -- "main" sera limité à un écran de minimum 300px - */
   }
   main .card {
     width: 500px;
