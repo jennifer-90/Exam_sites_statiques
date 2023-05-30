@@ -24,8 +24,13 @@ main{
     grid-area: navBar_Search_Mobile;
     display: none;
     background-color: white;
-    width: 90%;
+    width: 100%;
 }
+
+span{
+    font-weight: bold;
+}
+
 
 .navBar_Search_Mobile{
     height: 4rem;
@@ -34,8 +39,16 @@ main{
         display: flex;
         align-items: center;
         border-radius: 30px;
-        height: 30px;
+        height: 40px;
         width: 100%;
+        border: none;
+        box-shadow: rgba(128, 128, 128, 0.26) 1px 1px 1px 1px;
+
+        .interior_search_Mobile{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 }
 
@@ -46,6 +59,21 @@ input{
         outline: none;
         border: none;
     }
+}
+
+
+.svgFiltres_search_mobile{
+    position: relative;
+    z-index: 7;
+    width: 120px;
+
+}
+
+
+.field_setting{
+    border-radius: 50%;
+    border-width:1px;
+
 }
 
 /*-----|| item_1 ||------ => navBar_Mobile_Bottom ----*/
@@ -65,7 +93,6 @@ input{
     height: 35px;
     margin-right: 30px;
 }
-
 
 
 
@@ -101,6 +128,12 @@ input{
     height: 60px;
 }
 
+
+.logo_airbnb_alone_navbar_search{
+    display: none;
+}
+
+
     /* ==>> class "b" -- */
 
 .search{
@@ -108,11 +141,12 @@ input{
     align-items: center;
     justify-content: center;
     width: 460px;
-    height: 15px;
+    height: 2rem;
     border-radius: 30px;
-    box-shadow: rgba(128, 128, 128, 0.22) 1px 1px;
     padding: 10px;
     font-weight: bold;
+    border: none;
+    box-shadow: rgba(128, 128, 128, 0.26) 1px 1px 1px 1px;
 
     input{
         border:hidden;
@@ -124,10 +158,12 @@ input{
     }
 
     .icofont-search{
-        padding: 7px;
+        padding: 0.7rem;
         background-color: red;
         border-radius: 50px;
         color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
     }
 }
 
@@ -135,7 +171,12 @@ input{
 
 .c{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    p{
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
 
     .fieldset_user{
         display: flex;
@@ -182,13 +223,15 @@ input{
 
     .icone {
         height: 25px;
-        margin-right: 20px;
+        margin-right: 3rem;
     }
 
     .button_filtres{
+        display: flex;
+        align-items: center;
         height: 25px;
-        width: 80px;
         border-radius: 15px;
+        width: 70px;
 
         &:hover{
             cursor:pointer;
@@ -202,7 +245,9 @@ input{
 }
 
 .icone_Content{
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     p{
        font-size:0.7rem;
     }
@@ -290,6 +335,30 @@ input{
     }
 }
 
+
+
+/*-----||| °° Tablette °° ||| ----  ----*/
+@media screen and (max-width: 1000px){
+    main{
+        .logoAirbnb{
+            display: none;
+        }
+
+        .a{
+            width: 2rem;
+
+            .logo_airbnb_alone_navbar_search{
+                display: block;
+            }
+        }
+
+
+    }
+}
+
+
+
+
 /*-----||| °° Mobile °° ||| ---- =>> en-dessous de 800px ----*/
 
 @media screen and (max-width: 800px){
@@ -309,6 +378,7 @@ input{
             z-index: 6;
             top: 0.02rem;
             padding-top: 0.3rem;
+
         }
 
         .item_1 {
@@ -329,7 +399,7 @@ input{
         }
 
         .item_4{
-            padding-top: 3em;
+            margin-top: 2rem;
         }
     }
 }
